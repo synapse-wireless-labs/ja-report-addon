@@ -1,2 +1,33 @@
 {{!< layout}}
-Alex
+<div class="aui-page-panel main-panel">
+    <div class="aui-page-panel-inner">
+        <section class="aui-page-panel-item">
+            <div class="aui-group">
+                <div class="aui-item">
+                    <div class="epic-name">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        function setAddonData(content) {
+            $(".epic-name")
+                    .empty()
+                    .text(content)
+        }
+
+        $.ajax("/rest/api/2/issue/{{epicKey}}?jwt={{token}}", {
+            "error": function (xhr, textStatus, errorThrown) {
+                console.log(arguments);
+                setAddonData("Could not retrieve addon data: " + textStatus + " - " + errorThrown);
+            },
+            "success": function (data) {
+                setAddonData(data);
+            }
+        });
+    })
+</script>
