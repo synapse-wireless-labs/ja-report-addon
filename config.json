@@ -65,7 +65,11 @@
             "type": "postgres",
             // Again, a PaaS host like Heroku will probably provide the db connection
             // URL to you through the environment, so we tell atlassian-connect-express to use that value.
-            "url" : "postgres://$RDS_USERNAME:$RDS_PASSWORD@$RDS_HOSTNAME:$RDS_PORT/$RDS_DB_NAME"
+            "host": "$RDS_HOSTNAME",
+            "port": "$RDS_PORT",
+            "user": "$RDS_USERNAME",
+            "pass": "$RDS_PASSWORD",
+            "dbName": "$RDS_DB_NAME"
         },
         // Make sure that your add-on can only be registered by the hosts on
         // these domains.
