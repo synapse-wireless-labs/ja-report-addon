@@ -70,6 +70,8 @@ if (devEnv) app.use(errorHandler());
 // Wire up your routes using the express and `atlassian-connect-express` objects
 routes(app, addon);
 
+console.log(addon.config.store());
+
 // Boot the damn thing
 http.createServer(app).listen(port, function(){
   console.log('Add-on server running at http://' + os.hostname() + ':' + port);
